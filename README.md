@@ -1,4 +1,4 @@
-# This repo is no longer maintained. Consider using `npm init vite` and selecting the `svelte` option or — if you want a full-fledged app framework and don't mind using pre-1.0 software — use [SvelteKit](https://kit.svelte.dev), the official application framework for Svelte.
+# svelte 앱으로 구현한 Todo App 입니다. 스벨트를 이용하여 CRUD 기능을 구현합니다.
 
 ---
 
