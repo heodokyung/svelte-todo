@@ -1,6 +1,7 @@
 # svelte Todo app
 
-## svelte 앱으로 구현한 Todo App 입니다.  스벨트를 이용하여 CRUD 기능을 구현합니다.  스벨트에서 사용하는 조건문과 반복문에 대한 개념을 이해하고 스토어를 사용하여 데이터를 전역으로 관리하는 방법을 이해하는게 목표입니다.
+## svelte 앱으로 구현한 Todo App 입니다. 
+스벨트를 이용하여 CRUD 기능을 구현합니다.  스벨트에서 사용하는 조건문과 반복문에 대한 개념을 이해하고 스토어를 사용하여 데이터를 전역으로 관리하는 방법을 이해하는게 목표입니다.
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
