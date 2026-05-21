@@ -1,106 +1,124 @@
-# svelte Todo app
+# Svelte Todo
 
-## svelte 앱으로 구현한 Todo App 입니다. 
-스벨트를 이용하여 CRUD 기능을 구현합니다.  스벨트에서 사용하는 조건문과 반복문에 대한 개념을 이해하고 스토어를 사용하여 데이터를 전역으로 관리하는 방법을 이해하는게 목표입니다.  프로젝트는 하단에 설명된 스벨트 기본 템플릿을 사용하여 만들었습니다.
+Svelte로 간단한 Todo CRUD 흐름을 연습한 프로젝트입니다.
 
+입력한 Todo를 추가하고, 수정하고, 삭제하는 기본 기능을 구현했습니다.  
+복잡한 기능을 많이 넣기보다 Svelte의 데이터 바인딩, 이벤트 처리, 조건문, 반복문, store 사용 흐름을 익히는 데 초점을 둔 예제입니다.
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+---
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+## 바로 보기
+
+GitHub Pages 배포 후 아래 주소에서 확인할 수 있습니다.
+
+```txt
+https://heodokyung.github.io/svelte-todo/
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+---
 
+## 학습 포인트
 
-## Get started
+- Svelte 컴포넌트 기본 구조
+- `bind:value`를 이용한 입력값 처리
+- `on:click`, `on:keydown` 이벤트 처리
+- `{#each}` 반복문으로 Todo 목록 출력
+- `{#if}` 조건문으로 수정 모드 전환
+- `writable` store를 이용한 상태 관리
+- Rollup 기반 Svelte 프로젝트의 빌드와 배포 흐름
 
-Install the dependencies...
+---
+
+## 프로젝트 구조
+
+```txt
+svelte-todo/
+├─ public/
+│  ├─ index.html
+│  └─ global.css
+├─ src/
+│  ├─ App.svelte
+│  ├─ Todo.svelte
+│  └─ main.js
+├─ rollup.config.js
+├─ package.json
+└─ package-lock.json
+```
+
+---
+
+## 실행 방법
+
+의존성을 설치합니다.
 
 ```bash
-cd svelte-app
 npm install
 ```
 
-...then start [Rollup](https://rollupjs.org):
+개발 서버를 실행합니다.
 
 ```bash
 npm run dev
 ```
 
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+브라우저에서 아래 주소로 접속합니다.
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+```txt
+http://localhost:8080
+```
 
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
+---
 
-## Building and running in production mode
-
-To create an optimised version of the app:
+## 빌드
 
 ```bash
 npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+빌드 결과는 `public/build/` 폴더에 생성됩니다.
 
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
+```txt
+public/
+├─ index.html
+├─ global.css
+└─ build/
+   ├─ bundle.js
+   └─ bundle.css
 ```
 
-## Using TypeScript
+---
 
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
+## GitHub Pages 배포
 
-```bash
-node scripts/setupTypeScript.js
+이 프로젝트는 예전 Svelte Rollup 템플릿 구조입니다.  
+React CRA처럼 `package.json`의 `homepage` 값으로 경로가 자동 조정되지 않습니다.
+
+대신 `public/index.html`에서 정적 파일 경로를 상대경로로 작성했습니다.
+
+```html
+<link rel="stylesheet" href="./global.css" />
+<link rel="stylesheet" href="./build/bundle.css" />
+<script defer src="./build/bundle.js"></script>
 ```
 
-Or remove the script via:
+그래서 GitHub Pages처럼 하위 경로에 배포해도 파일을 안정적으로 찾을 수 있습니다.
 
-```bash
-rm scripts/setupTypeScript.js
+배포는 `.github/workflows/deploy-pages.yml`에서 처리합니다.
+
+GitHub 저장소에서 아래 설정을 확인하세요.
+
+```txt
+Settings
+→ Pages
+→ Build and deployment
+→ Source: GitHub Actions
 ```
 
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
+그다음 `main` 브랜치에 push하면 자동으로 빌드 후 GitHub Pages에 배포됩니다.
 
-## Deploying to the web
+---
 
-### With [Vercel](https://vercel.com)
+## 메모
 
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+이 프로젝트는 최신 SvelteKit 프로젝트가 아니라 Rollup 기반의 Svelte 학습 예제입니다.  
+새 프로젝트를 만든다면 SvelteKit 또는 Vite 기반 Svelte 템플릿을 사용하는 편이 좋지만, 이 저장소는 예전에 학습한 코드 흐름을 보존하는 데 의미를 둡니다.
