@@ -8,12 +8,7 @@ Svelte로 간단한 Todo CRUD 흐름을 연습한 프로젝트입니다.
 ---
 
 ## 바로 보기
-
-GitHub Pages 배포 후 아래 주소에서 확인할 수 있습니다.
-
-```txt
-https://heodokyung.github.io/svelte-todo/
-```
+[`바로가기`](https://heodokyung.github.io/svelte-todo/)
 
 ---
 
