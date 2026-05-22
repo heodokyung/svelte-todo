@@ -116,4 +116,3 @@ Settings
 ## 메모
 
 이 프로젝트는 최신 SvelteKit 프로젝트가 아니라 Rollup 기반의 Svelte 학습 예제입니다.  
-새 프로젝트를 만든다면 SvelteKit 또는 Vite 기반 Svelte 템플릿을 사용하는 편이 좋지만, 이 저장소는 예전에 학습한 코드 흐름을 보존하는 데 의미를 둡니다.
